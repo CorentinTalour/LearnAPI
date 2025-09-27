@@ -8,3 +8,11 @@ public class LivreDto
     public int? AnneePublication { get; set; }
     public bool Disponible { get; set; }
 }
+
+public class LivrePostDto
+{
+    public string Titre { get; set; } = string.Empty;
+    public string Auteur { get; set; } = string.Empty;
+    public int? AnneePublication { get; set; }
+    public bool Disponible { get; set; }
+}

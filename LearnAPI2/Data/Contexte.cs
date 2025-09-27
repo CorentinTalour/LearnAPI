@@ -36,7 +36,7 @@ public class Contexte : DbContext
             entity.Property(e => e.Note).IsRequired();
             entity.Property(e => e.Commentaire).HasMaxLength(255).IsRequired(false);
             entity.Property(e => e.DateCreation)
-                .HasDefaultValueSql("timezone('utc', now())")
+                .HasDefaultValueSql("SYSUTCDATETIME()")
                 .ValueGeneratedOnAdd();
         });
     }

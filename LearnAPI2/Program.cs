@@ -13,7 +13,7 @@ public class Program
         // Récupère la chaîne de connexion
         string? connect = builder.Configuration.GetConnectionString("ConnexionBDD");
 
-        builder.Services.AddDbContext<Contexte>(opt => opt.UseNpgsql(connect)
+        builder.Services.AddDbContext<Contexte>(opt => opt.UseSqlServer(connect)
             .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
         
         //Ajoute les services métiers
@@ -46,7 +46,7 @@ public class Program
             app.UseSwagger();
             app.UseSwaggerUI();
         }
-
+        
         app.UseHttpsRedirection();
         
         app.UseCors("AllowAll");

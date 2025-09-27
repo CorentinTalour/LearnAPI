@@ -1,4 +1,5 @@
 using LearnAPI2.Data;
+using LearnAPI2.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace LearnAPI2;
@@ -14,6 +15,10 @@ public class Program
 
         builder.Services.AddDbContext<Contexte>(opt => opt.UseNpgsql(connect)
             .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
+        
+        //Ajoute les services métiers
+        builder.Services.AddScoped<IServiceLivres, ServiceLivres>();
+        builder.Services.AddScoped<IServiceAvis, ServiceAvis>();
         
         // Add services to the container.
         builder.Services.AddAuthorization();
@@ -47,6 +52,8 @@ public class Program
         app.UseCors("AllowAll");
 
         app.UseAuthorization();
+        
+        app.MapControllers();
 
         app.Run();
     }
